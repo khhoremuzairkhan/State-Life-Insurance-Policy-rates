@@ -10,7 +10,23 @@ import streamlit as st
 
 EXCEL_FILE = Path(__file__).parent / "rate_list.xlsx"
 
-st.set_page_config(page_title="State Life Plan Calculator", page_icon="📊", layout="centered")
+st.set_page_config(page_title="State Life Plan Calculator", page_icon="📊", layout="wide")
+
+# Keep big numbers fully visible: slightly smaller metric text that wraps instead of "..."
+st.markdown(
+    """
+    <style>
+    [data-testid="stMetricValue"] { font-size: 1.9rem; }
+    [data-testid="stMetricValue"], [data-testid="stMetricValue"] * {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        word-break: break-word;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 @st.cache_data
